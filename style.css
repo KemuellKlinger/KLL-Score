@@ -109,3 +109,31 @@ select {
     background-size: cover;
     background-position: center;
 }
+
+@media (max-width: 768px) {
+    body {
+        font-size: 1.8em; /* era 1.2em → ~1.5x maior */
+    }
+
+    .card {
+        width: 90%;
+        padding: 20px;
+    }
+
+    #timer {
+        font-size: 7.5em; /* aumenta o destaque do timer */
+    }
+
+    .score {
+        font-size: 80px;
+    }
+
+    button {
+        padding: 12px;
+        font-size: 1.1em;
+    }
+
+    h1 {
+        font-size: 2em;
+    }
+}
