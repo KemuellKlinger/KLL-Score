@@ -19,7 +19,16 @@ function addTeam() {
     if (!name) return;
 
     teams.push({ name, state: newState(), score: 0 });
+    
+    // Define a equipe atual como a última que foi adicionada
+    current = teams.length - 1; 
+    
     updateTeams();
+    
+    // Garante que o select mostre o nome da equipe certa
+    document.getElementById("teamSelect").value = current;
+    
+    render();
 }
 
 function changeTeam(i) {
@@ -114,12 +123,55 @@ function calc(s) {
 
 function render() {
     const s = getState();
+    if (!s) return; // Segurança caso não haja equipe
+
     teams[current].score = calc(s);
 
-    document.getElementById("total").innerText = teams[current].score  + " Pontos";
+    document.getElementById("total").innerText = teams[current].score + " Pontos";
     document.getElementById("M01").innerText = s.M01;
     document.getElementById("M06").innerText = s.M06;
     document.getElementById("M07p").innerText = s.M07p;
+
+    // --- NOVO: SINCRONIZAR INTERFACE ---
+    // Atualiza Checkboxes
+    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(cb => {
+        // Pega o ID da missão pelo onchange (ex: toggle('M02a'))
+        const missionKey = cb.getAttribute('onchange').match(/'([^']+)'/)[1];
+        cb.checked = s[missionKey] || false;
+    });
+
+    // Atualiza Select de Discos (M08)
+    const selectDiscos = document.querySelector('select[onchange^="setRemaining"]');
+    if(selectDiscos) selectDiscos.value = s.M08;
+
+    // --- NOVO: SINCRONIZAR BOTÕES ATIVOS ---
+    
+    // Procura todos os cards que possuem botões de seleção
+    document.querySelectorAll('.card').forEach(card => {
+        // Tenta descobrir qual missão este card controla (ex: M04, M05 ou M01b)
+        const buttons = card.querySelectorAll('button[data-value]');
+        
+        if (buttons.length > 0) {
+            // Pega a chave da missão (M04, M05...)
+            // Para a M01, o estado do botão está em M01b
+            let missionKey = buttons[0].getAttribute('onclick').match(/'([^']+)'/)[1];
+            
+            // Se for a missão 1, os botões controlam o 'M01b' (bônus)
+            if (missionKey === "M01") missionKey = "M01b";
+
+            const valorAtual = s[missionKey];
+
+            buttons.forEach(btn => {
+                // Se o data-value do botão for igual ao que está no estado, ativa
+                if (btn.getAttribute('data-value') == valorAtual) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+        }
+    });
 
     renderRanking();
 }

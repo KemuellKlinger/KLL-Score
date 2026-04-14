@@ -2,14 +2,19 @@
 <html lang="pt-br">
 
 <head>
-    <meta charset="UTF-8">
-    <title>FLL Championship Score</title>
-    <link rel="stylesheet" href="style.css">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>KLL Championship Score</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
 </head>
 
 <body>
 
-    <h1>🏁 FLL Championship</h1>
+    <h1>🏁 KLL Championship</h1>
 
     <div class="topbar">
         <div>
@@ -40,9 +45,9 @@
             <span id="M01">0</span>
             <button onclick="add('M01',1)">+</button><br>
 
-            <button onclick="setBonus('M01','none'); setActive(this)">Sem</button>
-            <button onclick="setBonus('M01','balance'); setActive(this)">Equilíbrio</button>
-            <button onclick="setBonus('M01','team'); setActive(this)">Inclinado</button>
+            <button data-value="none" onclick="setBonus('M01','none'); setActive(this)">Sem</button>
+            <button data-value="balance" onclick="setBonus('M01','balance'); setActive(this)">Equilíbrio</button>
+            <button data-value="team" onclick="setBonus('M01','team'); setActive(this)">Inclinado</button>
         </div>
 
         <!-- M02 -->
@@ -51,7 +56,7 @@
             <div class="imagensMissoes">
                 <img src="missoes/segunda missao.jpg" alt="missao 2">
             </div>
-            <label><input type="checkbox" onchange="toggle('M02a')"> Liberação</label><br>
+            <label><input type="checkbox" onchange="toggle('M02a')"> Liberação</label>
             <label><input type="checkbox" onchange="toggle('M02b')"> Dispenser</label>
         </div>
 
@@ -82,10 +87,10 @@
             <div class="imagensMissoes">
                 <img src="missoes/quarta missao.jpg" alt="missao 4">
             </div>
-            <button onclick="setLevel('M04',0); setActive(this)">0</button>
-            <button onclick="setLevel('M04',1); setActive(this)">1</button>
-            <button onclick="setLevel('M04',2); setActive(this)">2</button>
-            <button onclick="setLevel('M04',3); setActive(this)">3</button>
+            <button data-value="0" onclick="setLevel('M04',0); setActive(this)">0</button>
+            <button data-value="1" onclick="setLevel('M04',1); setActive(this)">1</button>
+            <button data-value="2" onclick="setLevel('M04',2); setActive(this)">2</button>
+            <button data-value="3" onclick="setLevel('M04',3); setActive(this)">3</button>
         </div>
 
         <!-- M05 -->
@@ -94,11 +99,12 @@
             <div class="imagensMissoes">
                 <img id="imgM05" src="missoes/m05_0.jpg" alt="missao 5">
             </div>
-            <button onclick="setLevel('M05',0); setActive(this)">0</button>
-            <button onclick="setLevel('M05',1); setActive(this)">1</button>
-            <button onclick="setLevel('M05',2); setActive(this)">2</button>
-            <button onclick="setLevel('M05',3); setActive(this)">3</button>
-            <button onclick="setLevel('M05',4); setActive(this)">4</button><br>
+            <button data-value="0" onclick="setLevel('M05',0); setActive(this)">0</button>
+            <button data-value="1" onclick="setLevel('M05',1); setActive(this)">1</button>
+            <button data-value="2" onclick="setLevel('M05',2); setActive(this)">2</button>
+            <button data-value="3" onclick="setLevel('M05',3); setActive(this)">3</button>
+            <button data-value="4" onclick="setLevel('M05',4); setActive(this)">4</button><br>
+
             <label><input type="checkbox" onchange="toggle('M05b')"> Bateria</label>
         </div>
 
@@ -116,7 +122,7 @@
         <!-- M07 -->
         <div class="card">
             <h3>Coleta Seletiva</h3>
-             <div class="imagensMissoes">
+            <div class="imagensMissoes">
                 <img src="missoes/WhatsApp Image 2026-04-13 at 20.51.18.jpg" alt="missao 6">
             </div>
             <label><input type="checkbox" onchange="toggle('M07a')"> Amarelo</label><br>
@@ -144,8 +150,9 @@
         </div>
 
     </div>
-
-    <div class="ranking" id="ranking"></div>
+    <div id="cardRanking">
+        <div class="ranking" id="ranking">Ranking</div>
+    </div>
     <script src="app.js"></script>
 </body>
 

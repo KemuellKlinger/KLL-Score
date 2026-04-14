@@ -4,6 +4,13 @@ body {
     color: white;
     text-align: center;
     font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+}
+
+html * {
+    margin: 0;
+    padding: 0;
 }
 
 h1 {
@@ -60,21 +67,23 @@ select {
 
 }
 
-#timer{
+#timer {
     font-size: 6em;
     color: lightgreen;
     margin: 10px;
 }
-#tempo{
+
+#tempo {
     display: flex;
     align-items: center;
 }
-#btnTimer{
+
+#btnTimer {
     transition: 0.5s;
 
 }
 
-#btnTimer:hover{
+#btnTimer:hover {
     transition: 0.5s;
     background-color: #22c55e;
 }
@@ -91,9 +100,11 @@ select {
     max-width: 200px;
     border-radius: 20px;
 }
+
 .missao-linha {
     display: flex;
     align-items: center;
+    justify-content: space-around;
     gap: 10px;
     margin: 8px 0;
 }
@@ -104,36 +115,88 @@ select {
     object-fit: cover;
     border-radius: 10px;
 }
-#imgM05{
+
+#imgM05 {
     background-attachment: fixed;
     background-size: cover;
     background-position: center;
 }
 
+#cardRanking {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ranking {
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 12px;
+    width: 50%;
+    box-shadow: 0px 0px 10px rgb(255, 251, 0);
+    margin-bottom: 30px
+}
+
 @media (max-width: 768px) {
-    body {
-        font-size: 1.8em; /* era 1.2em → ~1.5x maior */
+
+    /* Ajusta a Topbar para não amontoar os elementos */
+    .topbar {
+        flex-direction: column;
+        gap: 15px;
     }
 
-    .card {
-        width: 90%;
-        padding: 20px;
+    #tempo {
+        flex-direction: column;
     }
 
+    /* Timer um pouco menor para não quebrar a tela, mas ainda grande */
     #timer {
-        font-size: 7.5em; /* aumenta o destaque do timer */
+        font-size: 6em;
+        margin: 5px;
     }
 
     .score {
-        font-size: 80px;
+        font-size: 50px;
     }
 
     button {
-        padding: 12px;
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 1.2em;
+        padding: 10px 15px;
+    }
+
+    /* Faz os cards ocuparem quase a tela toda lateralmente */
+    .card {
+        width: 85%;
+        margin: 10px auto;
+    }
+
+    /* Aumenta o tamanho dos checkboxes e labels para facilitar o toque */
+    input[type="checkbox"] {
+        transform: scale(1.6);
+        margin-right: 10px;
+    }
+
+    label {
+        display: inline-block;
+        padding: 10px 0;
         font-size: 1.1em;
     }
 
-    h1 {
-        font-size: 2em;
+    .missao-linha {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 8px 0;
     }
+
+    .terceiraMissao {
+        width: 40%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+    }
+
 }
