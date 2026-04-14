@@ -1,0 +1,111 @@
+body {
+    font-family: Arial;
+    background: #0f172a;
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+h1 {
+    color: #22c55e;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.card {
+    background: #1e293b;
+    margin: 10px;
+    padding: 15px;
+    border-radius: 12px;
+    width: 260px;
+    box-shadow: 0px 0px 10px rgb(71, 224, 122);
+}
+
+button {
+    padding: 8px;
+    margin: 4px;
+    border: none;
+    border-radius: 8px;
+    background: #334155;
+    color: white;
+    cursor: pointer;
+}
+
+button.active {
+    background: #22c55e;
+}
+
+.score {
+    font-size: 60px;
+    color: #22c55e;
+}
+
+.topbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+select {
+    padding: 5px;
+}
+
+.ranking {
+    margin-top: 20px;
+    font-size: 2em;
+
+}
+
+#timer{
+    font-size: 6em;
+    color: lightgreen;
+    margin: 10px;
+}
+#tempo{
+    display: flex;
+    align-items: center;
+}
+#btnTimer{
+    transition: 0.5s;
+
+}
+
+#btnTimer:hover{
+    transition: 0.5s;
+    background-color: #22c55e;
+}
+
+.active {
+    background-color: #4CAF50;
+    color: white;
+    border: 2px solid #2e7d32;
+}
+
+.imagensMissoes img {
+    width: 100%;
+    height: auto;
+    max-width: 200px;
+    border-radius: 20px;
+}
+.missao-linha {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.terceiraMissao {
+    width: 50%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+#imgM05{
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+}

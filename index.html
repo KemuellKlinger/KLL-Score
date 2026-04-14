@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>FLL Championship Score</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <h1>🏁 FLL Championship</h1>
+
+    <div class="topbar">
+        <div>
+            Equipe:
+            <select onchange="changeTeam(this.value)" id="teamSelect"></select>
+            <button onclick="addTeam()">+ Equipe</button>
+        </div>
+        <div id="tempo">
+            <div id="timer">
+                2:30
+            </div>
+            <button id="btnTimer" onclick="toggleTimer()">Iniciar</button>
+        </div>
+
+    </div>
+
+    <div class="score" id="total">0 Pontos</div>
+
+    <div class="container">
+
+        <!-- M01 -->
+        <div class="card">
+            <h3>Balança</h3>
+            <div class="imagensMissoes">
+                <img src="missoes/primeira missao.jpg" alt="missao 1">
+            </div>
+            <button onclick="add('M01',-1)">-</button>
+            <span id="M01">0</span>
+            <button onclick="add('M01',1)">+</button><br>
+
+            <button onclick="setBonus('M01','none'); setActive(this)">Sem</button>
+            <button onclick="setBonus('M01','balance'); setActive(this)">Equilíbrio</button>
+            <button onclick="setBonus('M01','team'); setActive(this)">Inclinado</button>
+        </div>
+
+        <!-- M02 -->
+        <div class="card">
+            <h3>Drop Disquete</h3>
+            <div class="imagensMissoes">
+                <img src="missoes/segunda missao.jpg" alt="missao 2">
+            </div>
+            <label><input type="checkbox" onchange="toggle('M02a')"> Liberação</label><br>
+            <label><input type="checkbox" onchange="toggle('M02b')"> Dispenser</label>
+        </div>
+
+        <!-- M03 -->
+        <div class="card">
+            <h3>Montanha-Russa</h3>
+
+            <div class="missao-linha">
+                <img class="terceiraMissao" src="missoes/terceira missao(montanha).jpg">
+                <label>
+                    <input type="checkbox" onchange="toggle('M03a')">
+                    Liberação
+                </label>
+            </div>
+
+            <div class="missao-linha">
+                <img class="terceiraMissao" src="missoes/Missao 7 parte liberacao.jpg">
+                <label>
+                    <input type="checkbox" onchange="toggle('M03b')">
+                    Resgate
+                </label>
+            </div>
+        </div>
+
+        <!-- M04 -->
+        <div class="card">
+            <h3>Martelo</h3>
+            <div class="imagensMissoes">
+                <img src="missoes/quarta missao.jpg" alt="missao 4">
+            </div>
+            <button onclick="setLevel('M04',0); setActive(this)">0</button>
+            <button onclick="setLevel('M04',1); setActive(this)">1</button>
+            <button onclick="setLevel('M04',2); setActive(this)">2</button>
+            <button onclick="setLevel('M04',3); setActive(this)">3</button>
+        </div>
+
+        <!-- M05 -->
+        <div class="card">
+            <h3>Velocímetro</h3>
+            <div class="imagensMissoes">
+                <img id="imgM05" src="missoes/m05_0.jpg" alt="missao 5">
+            </div>
+            <button onclick="setLevel('M05',0); setActive(this)">0</button>
+            <button onclick="setLevel('M05',1); setActive(this)">1</button>
+            <button onclick="setLevel('M05',2); setActive(this)">2</button>
+            <button onclick="setLevel('M05',3); setActive(this)">3</button>
+            <button onclick="setLevel('M05',4); setActive(this)">4</button><br>
+            <label><input type="checkbox" onchange="toggle('M05b')"> Bateria</label>
+        </div>
+
+        <!-- M06 -->
+        <div class="card">
+            <h3>Coleta Disquete</h3>
+            <div class="imagensMissoes">
+                <img src="missoes/Missao 7 parte 2.jpg" alt="missao 6">
+            </div>
+            <button onclick="add('M06',-1)">-</button>
+            <span id="M06">0</span>
+            <button onclick="add('M06',1)">+</button>
+        </div>
+
+        <!-- M07 -->
+        <div class="card">
+            <h3>Coleta Seletiva</h3>
+            <label><input type="checkbox" onchange="toggle('M07a')"> Amarelo</label><br>
+            Penalidades:
+            <button onclick="add('M07p',-1)">-</button>
+            <span id="M07p">0</span>
+            <button onclick="add('M07p',1)">+</button>
+        </div>
+
+        <!-- M08 -->
+        <div class="card">
+            <h3>Discos</h3>
+            <div class="imagensMissoes">
+                <img src="missoes/discos.png" alt="missao 6">
+            </div>
+            <select onchange="setRemaining(this.value)">
+                <option>6</option>
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+                <option>0</option>
+            </select>
+        </div>
+
+    </div>
+
+    <div class="ranking" id="ranking"></div>
+    <script src="app.js"></script>
+</body>
+
+</html>
