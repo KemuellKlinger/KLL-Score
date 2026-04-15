@@ -15,23 +15,23 @@
 <body>
 
     <h1>🏁 KLL Championship</h1>
-
+    <div>
+        Equipe:
+        <select onchange="changeTeam(this.value)" id="teamSelect"></select>
+        <button class="botaotopbar" onclick="addTeam()">+ Equipe</button>
+    </div>
     <div class="topbar">
-        <div>
-            Equipe:
-            <select onchange="changeTeam(this.value)" id="teamSelect"></select>
-            <button onclick="addTeam()">+ Equipe</button>
-        </div>
+       <div class="score" id="total">0 Pontos</div>
+
         <div id="tempo">
             <div id="timer">
                 2:30
             </div>
-            <button id="btnTimer" onclick="toggleTimer()">Iniciar</button>
+            <button class="botaotopbar" id="btnTimer" onclick="toggleTimer()">Iniciar</button>
         </div>
-
     </div>
 
-    <div class="score" id="total">0 Pontos</div>
+
 
     <div class="container">
 

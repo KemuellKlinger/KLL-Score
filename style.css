@@ -142,22 +142,70 @@ select {
 
     /* Ajusta a Topbar para não amontoar os elementos */
     .topbar {
-        flex-direction: column;
-        gap: 15px;
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Garante que fique por cima de tudo */
+        
+        background-color: rgba(15, 23, 42, 0.8); 
+        
+        /* Isso borra o que está ATRÁS do elemento, não o elemento em si */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px); /* Suporte para Safari/iOS */
+        
+        /* 3. Ajustes visuais para o efeito de vidro */
+        padding: 10px;
+        border-bottom: 1px solid rgba(34, 197, 94, 0.3); /* Linha sutil verde */
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra suave para dar profundidade */
+        
+        /* Mantém a organização vertical */
+        flex-direction: row; 
+        gap: 5px;
+    }
+    .topbar select{
+        border-radius: 10px;
+    }
+
+    /* Reduzimos o Timer e Pontuação para caber na "faixa" */
+    #timer {
+        font-size: 2.2em !important;
+        margin: 0;
+        color: #22c55e;
+    }
+
+    .score {
+        position: static;
+        font-size: 22px !important;
+        color: white; /* Cor branca para contrastar melhor no fundo escuro */
+        margin-top: 0;
+    }
+    .botaotopbar{
+        font-size: 0.9em;
+        padding: 3px;
+        margin: 4px;
+        border: none;
+        border-radius: 8px;
+        background: #334155;
+        color: white;
+        cursor: pointer;
     }
 
     #tempo {
-        flex-direction: column;
+        flex-direction: row; /* Coloca timer e botão lado a lado */
+        justify-content: center;
+        gap: 20px;
     }
 
     /* Timer um pouco menor para não quebrar a tela, mas ainda grande */
     #timer {
-        font-size: 6em;
-        margin: 5px;
+        font-size: 2.5em !important; /* Bem menor que os 7.5em de antes */
+        margin: 0;
     }
 
     .score {
-        font-size: 50px;
+        position: static; /* Remove o 'fixed' que você tentou usar */
+        font-size: 25px !important;
+        color: #22c55e;
+        margin-top: 5px;
     }
 
     button {
